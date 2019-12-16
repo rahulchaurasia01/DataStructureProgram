@@ -12,7 +12,6 @@ namespace DataStructureProgram
 {
     class SimpleBalancedParenthesesProgram
     {
-
         /// <summary>
         /// This method is used to test the SimpleBalancedParenthesesProgram Class.
         /// </summary>

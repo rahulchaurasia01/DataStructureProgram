@@ -16,6 +16,7 @@ namespace DataStructureProgram
     class Utility
     {
         
+        
         /// <summary>
         /// It check whether the parentheses are balanced or not.
         /// </summary>
@@ -39,6 +40,22 @@ namespace DataStructureProgram
                 return true;
             else
                 return false;
+        }
+
+        /// <summary>
+        /// It Check whether the String 
+        /// </summary>
+        /// <param name="palindromeString"></param>
+        /// <returns></returns>
+        public Boolean CheckPalindrome(string palindromeString)
+        {
+            Deque deque = new Deque();
+
+            char[] str = palindromeString.ToCharArray();
+
+            int n = str.Length;
+
+            return false;
         }
 
     }
