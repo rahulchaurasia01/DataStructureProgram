@@ -27,7 +27,8 @@ namespace DataStructureProgram
                 Console.WriteLine("2. UnOrdered Read File Program");
                 Console.WriteLine("3. Ordered Single Linked List Program");
                 Console.WriteLine("4. Ordered Read File Program");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. Simple Balanced Parentheses");
+                Console.WriteLine("6. Exit");
                 Console.Write("Enter Your Choice. ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch(choice)
@@ -44,7 +45,10 @@ namespace DataStructureProgram
                     case 4: OrderedReadFileProgram.OrderedReadFile();
                             break;
 
-                    case 5: flag = true;
+                    case 5: SimpleBalancedParenthesesProgram.SimpleBalancedParentheses();
+                            break;
+
+                    case 6: flag = true;
                             break;
 
                     default: Console.WriteLine("Invalid Choice !!!");
