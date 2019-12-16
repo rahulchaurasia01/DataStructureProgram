@@ -23,16 +23,31 @@ namespace DataStructureProgram
                 Console.WriteLine();
                 Console.WriteLine("Welcome to BridgeLabz");
                 Console.WriteLine();
-                Console.WriteLine("1. SingleLinkedProgram");
-                Console.WriteLine("2. Exit");
-                Console.Write("Enter Your Choice.");
+                Console.WriteLine("1. UnOrdered Single Linked List Program");
+                Console.WriteLine("2. UnOrdered Read File Program");
+                Console.WriteLine("3. Ordered Single Linked List Program");
+                Console.WriteLine("4. Ordered Read File Program");
+                Console.WriteLine("5. Exit");
+                Console.Write("Enter Your Choice. ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch(choice)
                 {
-                    case 1: SingleLinkedListProgram.SingleLinkedList();
+                    case 1: UnOrderedSingleLinkedListProgram.SingleLinkedList();
                             break;
 
-                    case 2: flag = true;
+                    case 2: UnOrderedReadFileProgram.ReadFile();
+                            break;
+
+                    case 3: OrderedSingleLinkedListProgram.OrderedSingleLinkedList();
+                            break;
+
+                    case 4: OrderedReadFileProgram.OrderedReadFile();
+                            break;
+
+                    case 5: flag = true;
+                            break;
+
+                    default: Console.WriteLine("Invalid Choice !!!");
                             break;
                 }
 

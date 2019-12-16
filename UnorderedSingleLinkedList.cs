@@ -1,5 +1,5 @@
 ﻿/*
- *  Purpose: Logic of the SingleLinkedList Program.
+ *  Purpose: Logic of the UnOrderedSingleLinkedList Program.
  * 
  *  @author  Rahul Chaurasia
  *  @version 1.0
@@ -7,15 +7,16 @@
  */
 
 using System;
+using System.Text;
 
 namespace DataStructureProgram
 {
-    class SingleLinkedList
+    class UnorderedSingleLinkedList<T>
     {
 
         public class Node
         {
-            public int data;
+            public T data;
             public Node next;
 
         }
@@ -26,7 +27,7 @@ namespace DataStructureProgram
         /// Add the item to the node
         /// </summary>
         /// <param name="data"></param>
-        public void AddNode(int data)
+        public void AddNode(T data)
         {
 
             Node newNode = new Node();
@@ -59,11 +60,11 @@ namespace DataStructureProgram
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public Boolean SearchNode(int data)
+        public Boolean SearchNode(T data)
         {
             for (Node p = start; p != null; p = p.next)
             {
-                if (p.data == data)
+                if (p.data.Equals(data))
                     return true;
             }
 
@@ -86,7 +87,7 @@ namespace DataStructureProgram
         /// Append the item at the end of the node.
         /// </summary>
         /// <param name="data"></param>
-        public void Append(int data)
+        public void Append(T data)
         {
             if(start == null)
             {
@@ -133,7 +134,7 @@ namespace DataStructureProgram
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public int Index(int data)
+        public int Index(T data)
         {
             int index = 0;
             if (start == null)
@@ -143,7 +144,7 @@ namespace DataStructureProgram
                 for(Node p = start; p != null; p = p.next)
                 {
                     index++;
-                    if (p.data == data)
+                    if (p.data.Equals(data))
                         return index;
                 }
             }
@@ -198,6 +199,8 @@ namespace DataStructureProgram
                     if(postion == index+1)
                     {
                         Console.WriteLine(p.next.data);
+                        if(p.next.next == null)
+                            end = p.next;
                         p.next = p.next.next;
                         return;
                     }
@@ -211,7 +214,7 @@ namespace DataStructureProgram
         /// It removes the data from the node.
         /// </summary>
         /// <param name="data"></param>
-        public void Remove(int data)
+        public void Remove(T data)
         {
             Node temp = start;
             if (start == null)
@@ -223,15 +226,14 @@ namespace DataStructureProgram
             {
                 for (Node p = start; p != null; p = p.next)
                 {
-                    if (p.data == data)
+                    if (p.data.Equals(data))
                     {
-                        Console.WriteLine(p.data);
                         if (start == end)
                             start = end = null;
                         else if (p.next != null)
                         {
                             temp.next = p.next;
-                            if (start.data == data)
+                            if (start.data.Equals(data))
                                 start = start.next;
                         }
                         else
@@ -252,7 +254,7 @@ namespace DataStructureProgram
         /// </summary>
         /// <param name="position"></param>
         /// <param name="data"></param>
-        public void Insert(int position, int data)
+        public void Insert(int position, T data)
         {
             int count=0;
             Node temp = start;
@@ -262,7 +264,6 @@ namespace DataStructureProgram
             {
                 for(Node p = start; p != null; p = p.next)
                 {
-                    Console.WriteLine("Hola!!!");
                     if (position == count+1)
                     {
                         Node newNode = new Node();
@@ -291,6 +292,24 @@ namespace DataStructureProgram
                     temp = p;
                 }
             }
+        }
+    
+        /// <summary>
+        /// It Converts all the Data in the unordered Linked List to String.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            StringBuilder str = new StringBuilder();
+
+            if (start == null)
+                return str.ToString();
+            else
+            {
+                for (Node P = start; P != null; P = P.next)
+                    str.Append(P.data + " ");
+            }
+            return str.ToString();
         }
     
     }

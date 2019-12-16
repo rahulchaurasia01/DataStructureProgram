@@ -1,29 +1,30 @@
 ﻿/*
- *  Purpose: Program to test the SingleLinkedList Program.
+ *  Purpose: Program to test the OrderedSingleLinkedList Program.
  * 
  *  @author  Rahul Chaurasia
  *  @version 1.0
- *  @since   14-12-2019
+ *  @since   16-12-2019
  */
 
 using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace DataStructureProgram
 {
-    class SingleLinkedListProgram
+    class OrderedSingleLinkedListProgram
     {
         /// <summary>
-        /// This Method is used to test the SingleLinkedListProgram
+        /// This Method is used to test the OrderedSingleLinkedListProgram
         /// </summary>
-        public static void SingleLinkedList()
+        public static void OrderedSingleLinkedList()
         {
-
             Console.WriteLine();
-            Console.WriteLine("--------------------Single Linked List Program--------------------");
+            Console.WriteLine("--------------------Ordered Single Linked List Program--------------------");
             Console.WriteLine();
 
 
-            SingleLinkedList singleLinkedList = new SingleLinkedList();
+            OrderedSingleLinkedList singleLinkedList = new OrderedSingleLinkedList();
             Boolean flag = false;
             int choice, data;
             do
@@ -33,12 +34,11 @@ namespace DataStructureProgram
                 Console.WriteLine("3. Search Item");
                 Console.WriteLine("4. IsEmpty");
                 Console.WriteLine("5. Size.");
-                Console.WriteLine("6. Append");
-                Console.WriteLine("7. Index");
-                Console.WriteLine("8. Insert the data");
-                Console.WriteLine("9. Pop");
-                Console.WriteLine("10. Pop at position");
-                Console.WriteLine("11. Exit");
+                Console.WriteLine("6. Index");
+                Console.WriteLine("7. Pop");
+                Console.WriteLine("8. Pop at position");
+                Console.WriteLine("9. Display");
+                Console.WriteLine("10. Exit");
                 Console.Write("Enter ur Choice: ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -77,12 +77,6 @@ namespace DataStructureProgram
                         break;
 
                     case 6:
-                        Console.Write("Enter the data to be appended: ");
-                        data = Convert.ToInt32(Console.ReadLine());
-                        singleLinkedList.Append(data);
-                        break;
-
-                    case 7:
                         Console.Write("Enter the data to search its position: ");
                         data = Convert.ToInt32(Console.ReadLine());
                         int result = singleLinkedList.Index(data);
@@ -92,25 +86,20 @@ namespace DataStructureProgram
                             Console.WriteLine("Data not present");
                         break;
 
-                    case 8:
-                        Console.Write("Enter the Position you want to Add: ");
-                        int post = Convert.ToInt32(Console.ReadLine());
-                        Console.Write("Enter the Data: ");
-                        data = Convert.ToInt32(Console.ReadLine());
-                        singleLinkedList.Insert(post, data);
-                        break;
-
-                    case 9:
+                    case 7:
                         singleLinkedList.Pop();
                         break;
 
-                    case 10:
+                    case 8:
                         Console.Write("Enter the postion to pop the data from node: ");
                         data = Convert.ToInt32(Console.ReadLine());
                         singleLinkedList.Pop(data);
                         break;
 
-                    case 11:
+                    case 9: Console.WriteLine("The list of item are: {0}", singleLinkedList.ToString());
+                        break;
+
+                    case 10:
                         flag = true;
                         break;
 
