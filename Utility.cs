@@ -104,7 +104,11 @@ namespace DataStructureProgram
             return true;
         }
     
-
+        /// <summary>
+        /// To Print the Month of the given year.
+        /// </summary>
+        /// <param name="month"></param>
+        /// <param name="year"></param>
         public void Calendar(int month, int year)
         {
             DateTime dt = new DateTime(year, month, 1);
@@ -167,7 +171,6 @@ namespace DataStructureProgram
             else
                 return false;
         }
-
 
         /// <summary>
         /// To get the Day Of Week from the date.
