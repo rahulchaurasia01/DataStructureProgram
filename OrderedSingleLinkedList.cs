@@ -60,12 +60,11 @@ namespace DataStructureProgram
                             if (p.data > data)
                             {
                                 newNode.next = p;
-                                if(temp.next != null)
+                                if (temp.next != null)
                                     temp.next = newNode;
                                 flag = true;
                                 break;
                             }
-
                             temp = p;
                         }
                         if (!flag)
@@ -73,8 +72,6 @@ namespace DataStructureProgram
                             end.next = newNode;
                             end = newNode;
                         }
-                            
-
                     }
                 }
                 else
