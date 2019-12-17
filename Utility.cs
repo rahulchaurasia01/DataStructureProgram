@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace DataStructureProgram
@@ -104,7 +105,86 @@ namespace DataStructureProgram
         }
     
 
+        public void Calendar(int month, int year)
+        {
+            DateTime dt = new DateTime(year, month, 1);
 
+            //string[] weeks = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday",
+            //                   "Friday", "Saturday"};
+
+            
+            string weekName = dt.DayOfWeek.ToString();
+
+            Calendar calendar = CultureInfo.InvariantCulture.Calendar;
+
+            int totalDays = calendar.GetDaysInMonth(year, month);
+
+            int day = DayOfWeek(month, 1, year);
+
+            int count = 0;
+
+            Console.WriteLine("Sun\tMon\tTue\tWed\tThr\tFri\tSat");
+
+            for (int i = 0; i < day; i++)
+            {
+                Console.Write(" \t ");
+                count++;
+            }
+                
+
+            for(int i=1; i <= totalDays; i++)
+            {
+                Console.Write(i + "\t");
+                count++;
+                if(count == 7)
+                {
+                    Console.WriteLine();
+                    count = 0;
+                }
+            }
+           
+        }
+
+        /// <summary>
+        /// It return true if it is a leap year or else false
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
+        public Boolean LeapYear(int year)
+        {
+            if (year % 4 == 0)
+            {
+                if (year % 100 != 0)
+                {
+                    if (year % 400 == 0)
+                        return true;
+                    else
+                        return false;
+                }
+                else
+                    return true;
+            }
+            else
+                return false;
+        }
+
+
+        /// <summary>
+        /// To get the Day Of Week from the date.
+        /// </summary>
+        /// <param name="m"></param>
+        /// <param name="d"></param>
+        /// <param name="y"></param>
+        public static int DayOfWeek(int m, int d, int y)
+        {
+            int y0 = y - (14 - m) / 12;
+            int x = y0 + (y0 / 4) - (y0 / 100) + (y0 / 400);
+            int m0 = m + 12 * ((14 - m) / 12) - 2;
+            int d0 = (d + x + ((31 * m0) / 12)) % 7;
+
+            return d0;
+
+        }
 
     }
 }
