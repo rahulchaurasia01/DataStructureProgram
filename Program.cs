@@ -29,9 +29,11 @@ namespace DataStructureProgram
                 Console.WriteLine("4. Ordered Read File Program");
                 Console.WriteLine("5. Simple Balanced Parentheses");
                 Console.WriteLine("6. Prime Number Program");
-                Console.WriteLine("7. Queue Linked List Program");
-                Console.WriteLine("8. Stack Linked List Program");
-                Console.WriteLine("9. Exit");
+                Console.WriteLine("7. Stack Linked List Program");
+                Console.WriteLine("8. Prime Number that are Anagram using Stack Program");
+                Console.WriteLine("9. Queue Linked List Program");
+                Console.WriteLine("10. Prime Number that are Anagram using Queue Program");
+                Console.WriteLine("11. Exit");
                 Console.Write("Enter Your Choice. ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch(choice)
@@ -54,14 +56,20 @@ namespace DataStructureProgram
                     case 6: PrimeNumberProgram.PrimeNumber();
                             break;
 
-                    case 7: QueueLinkedListProgram.QueueLinkedList();
+                    case 7: StackLinkedListProgram.StackLinkedList();
                             break;
 
-                    case 8: StackLinkedListProgram.StackLinkedList();
+                    case 8: PrimeNumberAnagramStackProgram.PrimeNumberAnagramStack();
                             break;
 
-                    case 9: flag = true;
+                    case 9: QueueLinkedListProgram.QueueLinkedList();
                             break;
+
+                    case 10: PrimeNumberAnagramQueueProgram.PrimeNumberAnagramQueue();
+                             break;
+
+                    case 11: flag = true;
+                             break;
 
                     default: Console.WriteLine("Invalid Choice !!!");
                             break;

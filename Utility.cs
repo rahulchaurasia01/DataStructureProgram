@@ -15,7 +15,8 @@ namespace DataStructureProgram
 {
     class Utility
     {
-        
+
+        StackLinkedList stackLinkedList = new StackLinkedList();
         
         /// <summary>
         /// It check whether the parentheses are balanced or not.
@@ -58,7 +59,6 @@ namespace DataStructureProgram
             return false;
         }
 
-
         /// <summary>
         /// It Check Whether the Number is a Prime Number or Not.
         /// </summary>
@@ -76,7 +76,35 @@ namespace DataStructureProgram
             }
             return true;
         }
+
+        /// <summary>
+        /// Anagram Detection.
+        /// </summary>
+        /// <param name="str1"></param>
+        /// <param name="str2"></param>
+        /// <returns></returns>
+        public Boolean AnagramDetection(string str1, string str2)
+        {
+            if (str1.Length != str2.Length)
+                return false;
+
+            char[] a = str1.ToCharArray();
+            char[] b = str2.ToCharArray();
+
+            Array.Sort(a);
+            Array.Sort(b);
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] != b[i])
+                    return false;
+            }
+
+            return true;
+        }
     
-    
+
+
+
     }
 }
