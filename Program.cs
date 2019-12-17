@@ -28,8 +28,10 @@ namespace DataStructureProgram
                 Console.WriteLine("3. Ordered Single Linked List Program");
                 Console.WriteLine("4. Ordered Read File Program");
                 Console.WriteLine("5. Simple Balanced Parentheses");
-                Console.WriteLine("6. Queue Linked List Program");
-                Console.WriteLine("7. Exit");
+                Console.WriteLine("6. Prime Number Program");
+                Console.WriteLine("7. Queue Linked List Program");
+                Console.WriteLine("8. Stack Linked List Program");
+                Console.WriteLine("9. Exit");
                 Console.Write("Enter Your Choice. ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch(choice)
@@ -49,10 +51,16 @@ namespace DataStructureProgram
                     case 5: SimpleBalancedParenthesesProgram.SimpleBalancedParentheses();
                             break;
 
-                    case 6: QueueLinkedListProgram.QueueLinkedList();
+                    case 6: PrimeNumberProgram.PrimeNumber();
                             break;
 
-                    case 7: flag = true;
+                    case 7: QueueLinkedListProgram.QueueLinkedList();
+                            break;
+
+                    case 8: StackLinkedListProgram.StackLinkedList();
+                            break;
+
+                    case 9: flag = true;
                             break;
 
                     default: Console.WriteLine("Invalid Choice !!!");
