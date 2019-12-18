@@ -33,11 +33,12 @@ namespace DataStructureProgram
                 Console.WriteLine("8. Number Slot Program");
                 Console.WriteLine("9. Calendar Program");
                 Console.WriteLine("10. Prime Number Program");
-                Console.WriteLine("11. Stack Linked List Program");
-                Console.WriteLine("12. Prime Number that are Anagram using Stack Program");
-                Console.WriteLine("13. Queue Linked List Program");
-                Console.WriteLine("14. Prime Number that are Anagram using Queue Program");
-                Console.WriteLine("15. Exit");
+                Console.WriteLine("11. Prime Number that are Anagram using 2D Program");
+                Console.WriteLine("12. Stack Linked List Program");
+                Console.WriteLine("13. Prime Number that are Anagram using Stack Program");
+                Console.WriteLine("14. Queue Linked List Program");
+                Console.WriteLine("15. Prime Number that are Anagram using Queue Program");
+                Console.WriteLine("16. Exit");
                 Console.Write("Enter Your Choice. ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch(choice)
@@ -70,21 +71,24 @@ namespace DataStructureProgram
                             break;
 
                     case 10: PrimeNumberProgram.PrimeNumber();
-                            break;
-
-                    case 11: StackLinkedListProgram.StackLinkedList();
-                            break;
-
-                    case 12: PrimeNumberAnagramStackProgram.PrimeNumberAnagramStack();
-                            break;
-
-                    case 13: QueueLinkedListProgram.QueueLinkedList();
-                            break;
-
-                    case 14: PrimeNumberAnagramQueueProgram.PrimeNumberAnagramQueue();
                              break;
 
-                    case 15: flag = true;
+                    case 11: PrimeNumberAnagram2DProgram.PrimeNumberAnagram2D();
+                             break;
+
+                    case 12: StackLinkedListProgram.StackLinkedList();
+                             break;
+
+                    case 13: PrimeNumberAnagramStackProgram.PrimeNumberAnagramStack();
+                             break;
+
+                    case 14: QueueLinkedListProgram.QueueLinkedList();
+                             break;
+
+                    case 15: PrimeNumberAnagramQueueProgram.PrimeNumberAnagramQueue();
+                             break;
+
+                    case 16: flag = true;
                              break;
 
                     default: Console.WriteLine("Invalid Choice !!!");
