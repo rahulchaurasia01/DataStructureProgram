@@ -16,8 +16,6 @@ namespace DataStructureProgram
 {
     class Utility
     {
-
-        StackLinkedList stackLinkedList = new StackLinkedList();
         
         /// <summary>
         /// It check whether the parentheses are balanced or not.
@@ -131,13 +129,7 @@ namespace DataStructureProgram
         public void Calendar(int month, int year)
         {
             DateTime dt = new DateTime(year, month, 1);
-
-            //string[] weeks = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday",
-            //                   "Friday", "Saturday"};
-
             
-            string weekName = dt.DayOfWeek.ToString();
-
             Calendar calendar = CultureInfo.InvariantCulture.Calendar;
 
             int totalDays = calendar.GetDaysInMonth(year, month);

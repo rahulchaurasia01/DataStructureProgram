@@ -32,7 +32,6 @@ namespace DataStructureProgram
             else
             {
                 rear++;
-                char temp;
                 for(int i=rear;i>=1;i--)
                 {
                     deque[i] = deque[i - 1];
