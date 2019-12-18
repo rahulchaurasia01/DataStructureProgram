@@ -28,7 +28,13 @@ namespace DataStructureProgram
             Console.Write("Enter the String: ");
             string str = Console.ReadLine();
 
+            Utility utils = new Utility();
 
+            if (utils.CheckPalindrome(str))
+                Console.WriteLine("The String is a Palindrome");
+            else
+                Console.WriteLine("The String is not a Palindrome");
+            
 
         }
     }

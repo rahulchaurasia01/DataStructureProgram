@@ -55,9 +55,28 @@ namespace DataStructureProgram
 
             char[] str = palindromeString.ToCharArray();
 
-            int n = str.Length;
+            for (int i = 0; i < str.Length; i++)
+                deque.AddFront(str[i]);
 
-            return false;
+            int n = str.Length / 2;
+            Boolean flag = false;
+
+            for(int i=1;i<=n;i++)
+            {
+                char a, b;
+                a = deque.RemoveFront();
+                b = deque.RemoveRear();
+
+                if(a !=b)
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag)
+                return false;
+            else
+                return true;
         }
 
         /// <summary>

@@ -32,8 +32,12 @@ namespace DataStructureProgram
             else
             {
                 rear++;
-                for(int i=1;i<=rear;i++)
+                char temp;
+                for(int i=rear;i>=1;i--)
+                {
                     deque[i] = deque[i - 1];
+                }
+                    
 
                 deque[front] = character;
             }
@@ -62,32 +66,35 @@ namespace DataStructureProgram
         /// <summary>
         /// It removes the element from the front of deque.
         /// </summary>
-        public void RemoveFront()
+        public char RemoveFront()
         {
             if (front == -1)
-                Console.WriteLine("Deque is Empty");
+                return '0';
             else
             {
-                Console.WriteLine(deque[front]);
+                char a = deque[front];
                 for (int i = 0; i < rear; i++)
                     deque[i] = deque[i + 1];
 
                 rear--;
+
+                return a;
             }
         }
 
         /// <summary>
         /// It Removes the element from the rear of deque.
         /// </summary>
-        public void RemoveRear()
+        public char RemoveRear()
         {
             if (rear == -1)
-                Console.WriteLine("Deque is Empty");
+                return '0';
             else
             {
-                Console.WriteLine(deque[rear]);
+                char a = deque[rear];
                 deque[rear] = ' ';
                 rear--;
+                return a;
             }
         }
     
