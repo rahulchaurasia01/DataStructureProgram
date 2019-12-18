@@ -43,13 +43,18 @@ namespace DataStructureProgram
         /// </summary>
         public void Dequeue()
         {
-            if (front == -1 || front == rear)
+            if (front == -1)
                 Console.WriteLine("There is no Item in the queue");
             else
             {
-                Console.WriteLine(queue[front]);
-                queue[front] = -1;
-                front++;
+                Console.Write(queue[front]);
+                for(int i = 0; i< rear;i++)
+                    queue[i] = queue[i + 1];
+                queue[rear] = -1;
+                rear--;
+                if (rear == -1)
+                    front = -1;
+                
             }
         }
 
@@ -59,7 +64,7 @@ namespace DataStructureProgram
         /// <returns></returns>
         public Boolean IsEmpty()
         {
-            if (front == -1 || front == rear)
+            if (front == -1 && rear == -1)
                 return true;
             else
                 return false;
@@ -71,7 +76,7 @@ namespace DataStructureProgram
         /// <returns></returns>
         public int Size()
         {
-            if (front == -1 || front == rear)
+            if (front == -1 && rear == -1)
                 return 0;
             else
                 return rear - front;
