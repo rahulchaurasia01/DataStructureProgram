@@ -54,6 +54,11 @@ namespace DataStructureProgram
 
                 }
 
+                for (int i = 0; i < fileData.Length; i++)
+                    Console.Write(fileData[i] + " ");
+
+                Console.WriteLine();
+
                 Console.Write("Enter the number to be searched: ");
                 data = Convert.ToInt32(Console.ReadLine());
 
@@ -101,6 +106,18 @@ namespace DataStructureProgram
                     }
                     Console.WriteLine("Number Added Successfully !!");
                 }
+
+                for (int i = 0; i < 11; i++)
+                {
+                    Console.Write(i + "\t");
+                    if (slot[i] != null)
+                    {
+                        orderedSingleLinkedList = slot[i];
+                        Console.Write(orderedSingleLinkedList.ToString());
+                    }
+                    Console.WriteLine();
+                }
+
             }
             catch (Exception e)
             {
