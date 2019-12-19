@@ -17,53 +17,61 @@ namespace DataStructureProgram
         /// </summary>
         public static void PrimeNumberAnagramQueue()
         {
-            Console.WriteLine();
-            Console.WriteLine("--------------------Prime Number Anagram using Queue Program--------------------");
-            Console.WriteLine();
-
-            Utility utils = new Utility();
-
-            int count = 0, tempCount = 0;
-
-            string[] primeNumber = new string[200];
-            QueueLinkedList queueLinkedList1 = new QueueLinkedList();
-            QueueLinkedList queueLinkedList2 = new QueueLinkedList();
-
-            while (count <= 1000)
+            try
             {
-                Boolean flag = utils.IsPrimeNumber(count);
+                Console.WriteLine();
+                Console.WriteLine("--------------------Prime Number Anagram using Queue Program--------------------");
+                Console.WriteLine();
 
-                if (flag)
+                Utility utils = new Utility();
+
+                int count = 0, tempCount = 0;
+                string[] primeNumber = new string[200];
+                bool flag;
+
+                QueueLinkedList queueLinkedList1 = new QueueLinkedList();
+                QueueLinkedList queueLinkedList2 = new QueueLinkedList();
+
+                while (count <= 1000)
                 {
-                    primeNumber[tempCount] = count + "";
-                    tempCount++;
-                }
+                    flag = utils.IsPrimeNumber(count);
 
-                count++;
-            }
-            count = 0;
-
-            do
-            {
-                string str1 = primeNumber[count];
-                for (int i = count + 1; i < tempCount; i++)
-                {
-                    string str2 = primeNumber[i];
-                    if (utils.AnagramDetection(str1, str2))
+                    if (flag)
                     {
-                        queueLinkedList1.Enqueue(Convert.ToInt32(str1));
-                        queueLinkedList2.Enqueue(Convert.ToInt32(str2));
+                        primeNumber[tempCount] = count + "";
+                        tempCount++;
                     }
-                }
-                count++;
-            } while (count != tempCount);
 
-            int n = queueLinkedList1.Size();
-            string[] tempAnag = queueLinkedList1.ToString().Split(' ');
-            string[] tempRevAnag = queueLinkedList2.ToString().Split(' ');
-            Console.WriteLine("The Prime Number that are Anagram using Queue: ");
-            for (int i = 0; i < n; i++)
-                Console.WriteLine(tempAnag[i] + " " + tempRevAnag[i]);
+                    count++;
+                }
+                count = 0;
+
+                do
+                {
+                    string str1 = primeNumber[count];
+                    for (int i = count + 1; i < tempCount; i++)
+                    {
+                        string str2 = primeNumber[i];
+                        if (utils.AnagramDetection(str1, str2))
+                        {
+                            queueLinkedList1.Enqueue(Convert.ToInt32(str1));
+                            queueLinkedList2.Enqueue(Convert.ToInt32(str2));
+                        }
+                    }
+                    count++;
+                } while (count != tempCount);
+
+                int n = queueLinkedList1.Size();
+                string[] tempAnag = queueLinkedList1.ToString().Split(' ');
+                string[] tempRevAnag = queueLinkedList2.ToString().Split(' ');
+                Console.WriteLine("The Prime Number that are Anagram using Queue: ");
+                for (int i = 0; i < n; i++)
+                    Console.WriteLine(tempAnag[i] + " " + tempRevAnag[i]);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Message: {0}", e.Message);
+            }
         }
 
     }

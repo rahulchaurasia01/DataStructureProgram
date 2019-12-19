@@ -17,21 +17,41 @@ namespace DataStructureProgram
         /// </summary>
         public static void Calendar()
         {
-            Console.WriteLine();
-            Console.WriteLine("--------------------Calendar Program--------------------");
-            Console.WriteLine();
+            try
+            {
+                Console.WriteLine();
+                Console.WriteLine("--------------------Calendar Program--------------------");
+                Console.WriteLine();
 
-            int month, year;
+                Utility utils = new Utility();
 
-            Console.Write("Enter the Month: ");
-            month = Convert.ToInt32(Console.ReadLine());
+                int month, year;
+                bool flag;
 
-            Console.Write("Enter the year: ");
-            year = Convert.ToInt32(Console.ReadLine());
+             
+                do
+                {
+                    Console.WriteLine();
+                    Console.Write("Enter the Month: ");
+                    flag = int.TryParse(Console.ReadLine(), out month);
+                    Utility.ErrorMessage(flag);
+                } while (!flag);
 
-            Utility utils = new Utility();
 
-            utils.Calendar(month, year);
+                do
+                {
+                    Console.WriteLine();
+                    Console.Write("Enter the year: ");
+                    flag = int.TryParse(Console.ReadLine(), out year);
+                    Utility.ErrorMessage(flag);
+                } while (!flag);
+            
+                utils.Calendar(month, year);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Message: {0}", e.Message);
+            }
         }
     }
 }

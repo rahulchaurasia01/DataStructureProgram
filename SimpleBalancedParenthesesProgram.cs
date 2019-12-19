@@ -17,23 +17,28 @@ namespace DataStructureProgram
         /// </summary>
         public static void SimpleBalancedParentheses()
         {
-
-            Console.WriteLine();
-            Console.WriteLine("--------------------Simple Balanced Parentheses Program--------------------");
-            Console.WriteLine();
-
-
-            Console.Write("Enter the Arithmetic Expression: ");
-            string str = Console.ReadLine();
-
-            Utility utils = new Utility();
-
-            if (utils.CheckParentheses(str))
-                Console.WriteLine("The Arithmetic Expression are Balanced");
-            else
-                Console.WriteLine("The Arithmetic Expression are not Balanced");
+            try
+            {
+                Console.WriteLine();
+                Console.WriteLine("--------------------Simple Balanced Parentheses Program--------------------");
+                Console.WriteLine();
 
 
+                Console.Write("Enter the Arithmetic Expression: ");
+                string str = Console.ReadLine();
+
+                Utility utils = new Utility();
+
+                if (utils.CheckParentheses(str))
+                    Console.WriteLine("The Arithmetic Expression are Balanced");
+                else
+                    Console.WriteLine("The Arithmetic Expression are not Balanced");
+
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Message: {0}", e.Message);
+            }
         }
     }
 }

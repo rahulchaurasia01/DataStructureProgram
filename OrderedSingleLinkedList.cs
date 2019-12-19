@@ -256,7 +256,7 @@ namespace DataStructureProgram
             StringBuilder str = new StringBuilder();
 
             if (start == null)
-                return str.ToString();
+                return "0";
             else
             {
                 for (Node P = start; P != null; P = P.next)

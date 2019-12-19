@@ -8,8 +8,6 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DataStructureProgram
 {
@@ -20,83 +18,91 @@ namespace DataStructureProgram
         /// </summary>
         public static void PrimeNumberAnagram2D()
         {
-            Console.WriteLine();
-            Console.WriteLine("--------------------Prime Number that are Anagram and not an Anagram 2D Program--------------------");
-            Console.WriteLine();
-
-            Utility utils = new Utility();
-            int count = 0, tempCount = 0;
-
-            string[] primeNumber = new string[200];
-
-            while (count <= 1000)
+            try
             {
-                Boolean flag = utils.IsPrimeNumber(count);
 
-                if (flag)
+                Console.WriteLine();
+                Console.WriteLine("--------------------Prime Number that are Anagram and not an Anagram 2D Program--------------------");
+                Console.WriteLine();
+
+                Utility utils = new Utility();
+                int count = 0, tempCount = 0;
+                bool flag;
+
+                string[] primeNumber = new string[200];
+
+                while (count <= 1000)
                 {
-                    primeNumber[tempCount] = count + "";
-                    tempCount++;
-                }
+                    flag = utils.IsPrimeNumber(count);
 
-                count++;
-            }
-            
-            Console.WriteLine();
-
-            int anagramCount = 0, notAnagramCount = 0;
-            count = 0;
-            int[] thatAreAnagram = new int[tempCount];
-            int[] thatAreNotAnagram = new int[tempCount];
-            Boolean flag1 = false;
-            string str2;
-
-            int[][] anagramNotAnagram = new int[2][];
-
-            do
-            {
-                flag1 = false;
-                string str1 = primeNumber[count];
-                for (int i = count + 1; i < tempCount; i++)
-                {
-                    str2 = primeNumber[i];
-                    if (utils.AnagramDetection(str1, str2))
+                    if (flag)
                     {
-                        flag1 = true;
-                        break;
+                        primeNumber[tempCount] = count + "";
+                        tempCount++;
                     }
-                }
-                if(flag1)
-                {
-                    thatAreAnagram[anagramCount] = Convert.ToInt32(str1);
-                    anagramCount++;
-                }
-                else
-                {
-                    thatAreNotAnagram[notAnagramCount] = Convert.ToInt32(str1);
-                    notAnagramCount++;
-                }
-                count++;
-            } while (count != tempCount);
 
-            anagramNotAnagram[0] = new int[anagramCount];
-            anagramNotAnagram[1] = new int[notAnagramCount];
-
-            for(int i=0;i<anagramNotAnagram.Length;i++)
-            {
-                for (int j = 0; j < anagramNotAnagram[i].Length; j++)
-                {
-                    if (i == 0)
-                        anagramNotAnagram[i][j] = thatAreAnagram[j];
-                    else
-                        anagramNotAnagram[i][j] = thatAreNotAnagram[j];
-                    Console.Write(anagramNotAnagram[i][j] + " ");
+                    count++;
                 }
+
                 Console.WriteLine();
+
+                int anagramCount = 0, notAnagramCount = 0;
+                count = 0;
+                int[] thatAreAnagram = new int[tempCount];
+                int[] thatAreNotAnagram = new int[tempCount];
+                string str2;
+
+                int[][] anagramNotAnagram = new int[2][];
+
+                do
+                {
+                    flag = false;
+                    string str1 = primeNumber[count];
+                    for (int i = count + 1; i < tempCount; i++)
+                    {
+                        str2 = primeNumber[i];
+                        if (utils.AnagramDetection(str1, str2))
+                        {
+                            flag = true;
+                            break;
+                        }
+                    }
+                    if (flag)
+                    {
+                        thatAreAnagram[anagramCount] = Convert.ToInt32(str1);
+                        anagramCount++;
+                    }
+                    else
+                    {
+                        thatAreNotAnagram[notAnagramCount] = Convert.ToInt32(str1);
+                        notAnagramCount++;
+                    }
+                    count++;
+                } while (count != tempCount);
+
+                anagramNotAnagram[0] = new int[anagramCount];
+                anagramNotAnagram[1] = new int[notAnagramCount];
+
+                for (int i = 0; i < anagramNotAnagram.Length; i++)
+                {
+                    for (int j = 0; j < anagramNotAnagram[i].Length; j++)
+                    {
+                        if (i == 0)
+                            anagramNotAnagram[i][j] = thatAreAnagram[j];
+                        else
+                            anagramNotAnagram[i][j] = thatAreNotAnagram[j];
+                        Console.Write(anagramNotAnagram[i][j] + " ");
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine();
+                }
+
                 Console.WriteLine();
             }
-
-            Console.WriteLine();
+            catch(Exception e)
+            {
+                Console.WriteLine("Message: {0}", e.Message);
+            }
         }
     }
 }

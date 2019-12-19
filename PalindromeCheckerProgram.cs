@@ -7,8 +7,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DataStructureProgram
 {
@@ -19,23 +17,28 @@ namespace DataStructureProgram
         /// </summary>
         public static void PalindromeChecker()
         {
+            try
+            {
+                Console.WriteLine();
+                Console.WriteLine("--------------------Palindrome Checker Program--------------------");
+                Console.WriteLine();
 
-            Console.WriteLine();
-            Console.WriteLine("--------------------Palindrome Checker Program--------------------");
-            Console.WriteLine();
 
+                Console.Write("Enter the String: ");
+                string str = Console.ReadLine();
 
-            Console.Write("Enter the String: ");
-            string str = Console.ReadLine();
+                Utility utils = new Utility();
 
-            Utility utils = new Utility();
+                if (utils.CheckPalindrome(str))
+                    Console.WriteLine("The String is a Palindrome");
+                else
+                    Console.WriteLine("The String is not a Palindrome");
 
-            if (utils.CheckPalindrome(str))
-                Console.WriteLine("The String is a Palindrome");
-            else
-                Console.WriteLine("The String is not a Palindrome");
-            
-
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Message: {0}", e.Message);
+            }
         }
     }
 }

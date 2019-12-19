@@ -19,16 +19,17 @@ namespace DataStructureProgram
         public static void ReadFile()
         {
 
-            Console.WriteLine();
-            Console.WriteLine("--------------------UnOrdered Read File Program--------------------");
-            Console.WriteLine();
-
-
-            Console.WriteLine("Reading Data from the File !!!");
-
             try
-            {
-                String[] fileData = File.ReadAllText(@"C:\Users\User\source\repos\DataStructureProgram\DataStructureProgram\UnOrderedInput.txt").Split(' ');
+            { 
+                Console.WriteLine();
+                Console.WriteLine("--------------------UnOrdered Read File Program--------------------");
+                Console.WriteLine();
+
+                string path = @"C:\Users\User\source\repos\DataStructureProgram\DataStructureProgram\UnOrderedInput.txt";
+               
+                Console.WriteLine("Reading Data from the File !!!");
+
+                string[] fileData = File.ReadAllText(path).Split(' ');
 
                 Console.WriteLine("File Read Successful");
 
@@ -46,7 +47,7 @@ namespace DataStructureProgram
                     Console.WriteLine("Deleting the Word: {0}", str1);
                     singleLinkedList.Remove(str1);
                     Console.WriteLine("Updating the file.");
-                    File.WriteAllText(@"C:\Users\User\source\repos\DataStructureProgram\DataStructureProgram\UnOrderedInput.txt", singleLinkedList.ToString());
+                    File.WriteAllText(path, singleLinkedList.ToString());
 
                 }
                 else
@@ -54,7 +55,7 @@ namespace DataStructureProgram
                     Console.WriteLine("Failed to find the word !!");
                     Console.WriteLine("Adding Word to the File !!");
                     singleLinkedList.Append(str1);
-                    File.WriteAllText(@"C:\Users\User\source\repos\DataStructureProgram\DataStructureProgram\UnOrderedInput.txt", singleLinkedList.ToString());
+                    File.WriteAllText(path, singleLinkedList.ToString());
                     Console.WriteLine("Word Added Successfully !!");
                 }
                 

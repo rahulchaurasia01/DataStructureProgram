@@ -7,8 +7,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DataStructureProgram
 {
@@ -19,60 +17,83 @@ namespace DataStructureProgram
         /// </summary>
         public static void StackLinkedList()
         {
-            Console.WriteLine();
-            Console.WriteLine("--------------------Stack Linked List Program--------------------");
-            Console.WriteLine();
-
-
-            StackLinkedList stackLinkedList = new StackLinkedList();
-            Boolean flag = false;
-            int choice, data;
-            do
+            try
             {
-                Console.WriteLine("1. Push Item.");
-                Console.WriteLine("2. Pop Item");
-                Console.WriteLine("3. Peek Item");
-                Console.WriteLine("4. IsEmpty");
-                Console.WriteLine("5. Size.");
-                Console.WriteLine("6. Display");
-                Console.WriteLine("7. Exit");
-                Console.Write("Enter ur Choice: ");
-                choice = Convert.ToInt32(Console.ReadLine());
-                switch (choice)
+                Console.WriteLine();
+                Console.WriteLine("--------------------Stack Linked List Program--------------------");
+
+
+                StackLinkedList stackLinkedList = new StackLinkedList();
+                bool flag=false, inputFlag;
+                int choice, data;
+                do
                 {
-                    case 1: Console.Write("Enter the data: ");
-                            data = Convert.ToInt32(Console.ReadLine());
+                    do
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("1. Push Item.");
+                        Console.WriteLine("2. Pop Item");
+                        Console.WriteLine("3. Peek Item");
+                        Console.WriteLine("4. IsEmpty");
+                        Console.WriteLine("5. Size.");
+                        Console.WriteLine("6. Display");
+                        Console.WriteLine("7. Exit");
+                        Console.Write("Enter ur Choice: ");
+                        inputFlag = int.TryParse(Console.ReadLine(), out choice);
+                        Utility.ErrorMessage(inputFlag);
+                    } while (!inputFlag);
+                    flag = false;
+                    switch (choice)
+                    {
+                        case 1:
+                            do
+                            {
+                                Console.WriteLine();
+                                Console.Write("Enter the data: ");
+                                inputFlag = int.TryParse(Console.ReadLine(), out data);
+                                Utility.ErrorMessage(inputFlag);
+                            } while (!inputFlag);
                             stackLinkedList.Push(data);
                             break;
 
-                    case 2: stackLinkedList.Pop();
+                        case 2:
+                            stackLinkedList.Pop();
                             break;
 
-                    case 3: stackLinkedList.Peek();
+                        case 3:
+                            stackLinkedList.Peek();
                             break;
 
-                    case 4: if (stackLinkedList.IsEmpty())
+                        case 4:
+                            if (stackLinkedList.IsEmpty())
                                 Console.WriteLine("Stack is Empty");
                             else
                                 Console.WriteLine("Stack is not Empty");
                             break;
 
-                    case 5: data = stackLinkedList.Size();
+                        case 5:
+                            data = stackLinkedList.Size();
                             Console.WriteLine("The Size of the Queue is: {0}", data);
                             break;
 
-                    case 6: Console.WriteLine("The list of item are: {0}", stackLinkedList.ToString());
+                        case 6:
+                            Console.WriteLine("The list of item are: {0}", stackLinkedList.ToString());
                             break;
 
-                    case 7: flag = true;
+                        case 7:
+                            flag = true;
                             break;
 
-                    default:
-                        Console.WriteLine("Invalid Choice.");
-                        break;
-                }
-                Console.WriteLine();
-            } while (!flag);
+                        default:
+                            Console.WriteLine("Invalid Choice.");
+                            break;
+                    }
+                } while (!flag);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Message: {0}", e.Message);
+            }
         }
     }
 }

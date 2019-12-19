@@ -7,9 +7,7 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace DataStructureProgram
 {
@@ -20,16 +18,19 @@ namespace DataStructureProgram
         /// </summary>
         public static void OrderedReadFile()
         {
-            Console.WriteLine();
-            Console.WriteLine("--------------------Ordered Read File Program--------------------");
-            Console.WriteLine();
-
-
-            Console.WriteLine("Reading Data from the File !!!");
-
             try
-            {
-                String[] fileData = File.ReadAllText(@"C:\Users\User\source\repos\DataStructureProgram\DataStructureProgram\OrderedInput.txt").Split(' ');
+            { 
+                Console.WriteLine();
+                Console.WriteLine("--------------------Ordered Read File Program--------------------");
+                Console.WriteLine();
+
+                string path = @"C:\Users\User\source\repos\DataStructureProgram\DataStructureProgram\Orderednput.txt";
+                bool flag;
+                int data;
+
+                Console.WriteLine("Reading Data from the File !!!");
+
+                string[] fileData = File.ReadAllText(path).Split(' ');
 
                 Console.WriteLine("File Read Successful");
 
@@ -38,8 +39,13 @@ namespace DataStructureProgram
                 foreach (string str in fileData)
                     singleLinkedList.AddNode(Convert.ToInt32(str));
 
-                Console.Write("Enter the number to be searched: ");
-                int data = Convert.ToInt32(Console.ReadLine());
+                do
+                {
+                    Console.WriteLine();
+                    Console.Write("Enter the number to be searched: ");
+                    flag = int.TryParse(Console.ReadLine(), out data);
+                    Utility.ErrorMessage(flag);
+                } while (!flag);
 
                 if (singleLinkedList.SearchNode(data))
                 {
@@ -48,15 +54,15 @@ namespace DataStructureProgram
                     singleLinkedList.Remove(data);
                     Console.WriteLine("Updating the file.");
                     Console.WriteLine(singleLinkedList.ToString());
-                    File.WriteAllText(@"C:\Users\User\source\repos\DataStructureProgram\DataStructureProgram\OrderedInput.txt", singleLinkedList.ToString());
-
+                    File.WriteAllText(path, singleLinkedList.ToString());
+                    Console.WriteLine("File Updated Successfully");
                 }
                 else
                 {
                     Console.WriteLine("Failed to find the Number !!");
                     Console.WriteLine("Adding Number to the File !!");
                     singleLinkedList.AddNode(data);
-                    File.WriteAllText(@"C:\Users\User\source\repos\DataStructureProgram\DataStructureProgram\OrderedInput.txt", singleLinkedList.ToString());
+                    File.WriteAllText(path, singleLinkedList.ToString());
                     Console.WriteLine(singleLinkedList.ToString());
                     Console.WriteLine("Number Added Successfully !!");
                 }
@@ -64,7 +70,7 @@ namespace DataStructureProgram
             }
             catch (Exception e)
             {
-                Console.WriteLine("{0} " + e.Message);
+                Console.WriteLine("Message: {0}", e.Message);
                 Console.WriteLine("Failed to Read File");
             }
 

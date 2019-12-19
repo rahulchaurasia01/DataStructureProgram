@@ -18,20 +18,26 @@ namespace DataStructureProgram
         /// </summary>
         public static void NumberSlot()
         {
-            Console.WriteLine();
-            Console.WriteLine("--------------------Function to search a Number in a slot Program--------------------");
-            Console.WriteLine();
-
-
-            OrderedSingleLinkedList[] slot = new OrderedSingleLinkedList[11];
-            OrderedSingleLinkedList orderedSingleLinkedList;
-            int data, remainder;
-
-            Console.WriteLine("Reading Data from the File !!!");
 
             try
             {
-                string[] fileData = File.ReadAllText(@"C:\Users\User\source\repos\DataStructureProgram\DataStructureProgram\NumberSlot.txt").Split(' ');
+
+                Console.WriteLine();
+                Console.WriteLine("--------------------Function to search a Number in a slot Program--------------------");
+                Console.WriteLine();
+
+                Utility utils = new Utility();
+
+                OrderedSingleLinkedList[] slot = new OrderedSingleLinkedList[11];
+                OrderedSingleLinkedList orderedSingleLinkedList;
+                
+                int data, remainder;
+                bool flag;
+                string path = @"C:\Users\User\source\repos\DataStructureProgram\DataStructureProgram\NumberSlot.txt";
+
+                Console.WriteLine("Reading Data from the File !!!");
+
+                string[] fileData = File.ReadAllText(path).Split(' ');
 
                 Console.WriteLine("File Read Successful");
 
@@ -57,33 +63,24 @@ namespace DataStructureProgram
                 for (int i = 0; i < fileData.Length; i++)
                     Console.Write(fileData[i] + " ");
 
-                Console.WriteLine();
-
-                Console.Write("Enter the number to be searched: ");
-                data = Convert.ToInt32(Console.ReadLine());
+                do
+                {
+                    Console.WriteLine();
+                    Console.Write("Enter the number to be searched: ");
+                    flag = int.TryParse(Console.ReadLine(), out data);
+                    Utility.ErrorMessage(flag);
+                } while (!flag);
 
                 remainder = data % 11;
-
                 orderedSingleLinkedList = slot[remainder];
+                
                 if(orderedSingleLinkedList.SearchNode(data))
                 {
                     Console.WriteLine("number Found Successfully !!!");
                     Console.WriteLine("Deleting the number: {0}", data);
                     orderedSingleLinkedList.Remove(data);
                     Console.WriteLine("Updating the file.");
-                    using(StreamWriter writer = new StreamWriter(@"C:\Users\User\source\repos\DataStructureProgram\DataStructureProgram\NumberSlot.txt"))
-                    {
-                        for (int i = 0; i < 11; i++)
-                        {
-                            writer.Write(i + "\t");
-                            if (slot[i] != null)
-                            {
-                                orderedSingleLinkedList = slot[i];
-                                writer.Write(orderedSingleLinkedList.ToString());
-                            }
-                            writer.WriteLine();
-                        }
-                    }
+                    utils.WriteFile(path, slot);
                     Console.WriteLine("File Updated SUccessfully");
                 }
                 else
@@ -91,19 +88,7 @@ namespace DataStructureProgram
                     Console.WriteLine("Failed to find the Number !!");
                     Console.WriteLine("Adding Number to the File !!");
                     orderedSingleLinkedList.AddNode(data);
-                    using (StreamWriter writer = new StreamWriter(@"C:\Users\User\source\repos\DataStructureProgram\DataStructureProgram\NumberSlot.txt"))
-                    {
-                        for (int i = 0; i < 11; i++)
-                        {
-                            writer.Write(i + "\t");
-                            if (slot[i] != null)
-                            {
-                                orderedSingleLinkedList = slot[i];
-                                writer.Write(orderedSingleLinkedList.ToString());
-                            }
-                            writer.WriteLine();
-                        }
-                    }
+                    utils.WriteFile(path, slot);
                     Console.WriteLine("Number Added Successfully !!");
                 }
 

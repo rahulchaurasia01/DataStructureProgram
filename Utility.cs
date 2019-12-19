@@ -10,6 +10,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Text;
 
 namespace DataStructureProgram
@@ -136,28 +137,43 @@ namespace DataStructureProgram
 
             int day = DayOfWeek(month, 1, year);
 
-            int count = 0;
+            int count = 1;
+
+            int[,] calendarArray = new int[6,7];
 
             Console.WriteLine("Sun\tMon\tTue\tWed\tThr\tFri\tSat");
 
-            for (int i = 0; i < day; i++)
+            for (int i = 0; i < 6; i++)
             {
-                Console.Write(" \t ");
-                count++;
-            }
-                
-
-            for(int i=1; i <= totalDays; i++)
-            {
-                Console.Write(i + "\t");
-                count++;
-                if(count == 7)
+                for(int j = 0; j< 7; j++)
                 {
-                    Console.WriteLine();
-                    count = 0;
+                    if(i==0 && j < day)
+                        calendarArray[0, j] = 0;
+                    else
+                    {
+                        if(count <= totalDays)
+                        {
+                            calendarArray[i, j] = count;
+                            count++;
+                        }
+                    }
                 }
             }
-           
+
+
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    if (calendarArray[i, j] == 0)
+                        Console.Write("\t");
+                    else
+                        Console.Write(calendarArray[i, j] + "\t");
+                }
+                Console.WriteLine();
+
+            }
+
         }
 
         /// <summary>
@@ -200,5 +216,36 @@ namespace DataStructureProgram
 
         }
 
+        /// <summary>
+        /// It Display the Error Message 
+        /// </summary>
+        /// <param name="flag">It store the true or false value</param>
+        public static void ErrorMessage(Boolean flag)
+        {
+            if (!flag)
+                Console.WriteLine("Please Input the Number. !!");
+        }
+
+        /// <summary>
+        /// Write Data to the file
+        /// </summary>
+        /// <param name="path"></param>
+        public void WriteFile(string path, OrderedSingleLinkedList[] slot)
+        {
+            OrderedSingleLinkedList orderedSingleLinkedList;
+            using StreamWriter writer = new StreamWriter(path);
+            for (int i = 0; i < 11; i++)
+            {
+                writer.Write(i + "\t");
+                if (slot[i] != null)
+                {
+                    orderedSingleLinkedList = slot[i];
+                    writer.Write(orderedSingleLinkedList.ToString());
+                }
+                writer.WriteLine();
+            }
+        }
+    
+    
     }
 }
